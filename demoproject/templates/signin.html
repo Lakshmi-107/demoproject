@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Basic styling for the form */
+form {
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the labels */
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Style for the input fields */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Style for the submit button */
+form button[type="submit1"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Style for the "Not yet Registered?" link */
+form .forgot-password {
+    display: block;
+    margin-top: 15px;
+    text-align: right;
+    font-size: 14px;
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the "Not yet Registered?" link */
+form .forgot-password:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+</style>
+    <title>Login Page</title>
+<h1 style="text-align: center;">Login</h1>
+<form method="post" action="/signin/">
+    {% csrf_token %}
+    <label for="">Username</label>
+    <input type="text" id="username" name="txt_username" placeholder="Enter your username" Required>
+    <br>
+
+    <label for="">Password</label>
+    <input type="password" id="password1" name="txt_pass" placeholder="Enter your password" Required>
+    <br>
+
+
+
+    <button type="submit1">Sign In</button>
+    <a href="/signup/" class="forgot-password pull-right">Not yet Registered? Register here</a>
+<div>
+    {% if messages %}
+			<ul class="messages" id="login_messages">
+				{% for message in messages %}
+					<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif%}
+</div>
+
+</form>
+{% endblock %}
+

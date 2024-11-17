@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--csrf=cross site request forgery attack-->
+<style>
+
+    /* Basic styling for the form */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for the labels */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style for the input fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the submit button */
+form button[type="submit1"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Style for the "Already Registered?" link */
+form .forgot-password {
+    display: block;
+    margin-top: 15px;
+    text-align: right;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Hover effect for the "Already Registered?" link */
+form .forgot-password:hover {
+    text-decoration: underline;
+}
+
+</style>
+<h1 style="text-align: center;">Register your Account</h1>
+<form method="post" action="/signup/">
+    {% csrf_token %}
+    <label for="">Username</label>
+    <input type="text" id="username" name="txt_username" placeholder="Enter your username" Required>
+    <br>
+    <label for="">First Name</label>
+    <input type="text" id="fname" name="txt_fname" placeholder="Enter your First Name" Required>
+    <br>
+    <label for="">Last Name</label>
+    <input type="text" id="lname" name="txt_lname" placeholder="Enter your Last Name" Required>
+    <br>
+    <label for="">Password</label>
+    <input type="Password" id="Password1" name="txt_pass1" placeholder="Enter your Password" Required>
+    <br>
+    <label for="">Confirm your Password</label>
+    <input type="password" id="password2" name="txt_pass2" placeholder="Confirm your Password" Required>
+    <br>
+    <label for="">Email Id</label>
+    <input type="email" id="email" name="txt_email" placeholder="Enter your Email Address" Required>
+    <br>
+
+    <button type="submit1">Sign Up</button>
+    <a href="/signin/" class="forgot-password pull-right">Already Registered? Login Now</a>
+
+</form>
+{% endblock %}

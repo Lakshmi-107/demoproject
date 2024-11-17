@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <img src="{% static 'images/offers.jpg' %}" alt="wallpaper" style="height:500px; width:1571px;">
+</div>
+
+<h2>Products</h2>
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4 mt-3">
+                     <div class="card" style="width: 18rem;">
+                          <img src="{{product.image.url}}" class="card-img-top" alt="not found" height="200px" width="150px">
+                          <h6 class="card-title" align="center"></h6>
+                         <div class="card-body">
+                             <h5 class="card-title">{{product.name}}</h5>
+                             <h5 class="card-title"> Price: {{ product.price}}</h5>
+                             <p class="card-text">{{product.desc|slice:"0:53"}}...</p>
+                             <a href="#" class="btn btn-primary">Add to Cart</a>
+                         </div>
+                     </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+
+
+{% endblock %}
